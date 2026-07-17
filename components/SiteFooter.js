@@ -71,10 +71,12 @@ export default async function SiteFooter() {
         <div>
           <h3 className="text-white font-bold text-sm uppercase tracking-wide mb-4">Quick Links</h3>
           <div className="flex flex-col gap-2 text-sm">
+            <Link href="/welcome-notes" className="text-gray-400 hover:text-gold transition">→ Welcome Notes</Link>
+            <Link href="/philosophy" className="text-gray-400 hover:text-gold transition">→ Philosophy</Link>
             <Link href="/portfolio" className="text-gray-400 hover:text-gold transition">→ Portfolio</Link>
             <Link href="/about" className="text-gray-400 hover:text-gold transition">→ About</Link>
             <Link href="/blog" className="text-gray-400 hover:text-gold transition">→ Blog</Link>
-            <Link href="/#say-hello" className="text-gray-400 hover:text-gold transition">→ Contact</Link>
+            <Link href="/contact" className="text-gray-400 hover:text-gold transition">→ Contact</Link>
           </div>
         </div>
       </div>
@@ -82,10 +84,10 @@ export default async function SiteFooter() {
       <div className="max-w-6xl mx-auto px-6 mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
         <p>SIVANN.COM © Copyright {new Date().getFullYear()}. All Rights Reserved.</p>
         <div className="flex gap-6">
-          <Link href="/" className="hover:text-gold transition">Welcome Notes</Link>
+          <Link href="/welcome-notes" className="hover:text-gold transition">Welcome Notes</Link>
           <Link href="/" className="hover:text-gold transition">Profile</Link>
           <Link href="/about" className="hover:text-gold transition">About Us</Link>
-          <Link href="/#say-hello" className="hover:text-gold transition">Contact</Link>
+          <Link href="/contact" className="hover:text-gold transition">Contact</Link>
         </div>
       </div>
     </footer>

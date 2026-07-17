@@ -15,7 +15,7 @@ export async function POST(request) {
     return Response.json({ error: 'Invalid request body' }, { status: 400 });
   }
 
-  const { name, email, message } = body || {};
+  const { name, email, subject, message } = body || {};
   if (!name || !email || !message) {
     return Response.json({ error: 'Missing required fields' }, { status: 400 });
   }
@@ -39,7 +39,7 @@ export async function POST(request) {
         from: 'Sivann.com Contact Form <contact@sivann.com>',
         to: [toEmail],
         reply_to: email,
-        subject: `New message from ${name} via sivann.com`,
+        subject: subject ? `[sivann.com] ${subject}` : `New message from ${name} via sivann.com`,
         text: `From: ${name} <${email}>\n\n${message}`,
       }),
     });

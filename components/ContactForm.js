@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
 
-export default function ContactForm() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+export default function ContactForm({ showSubject = false }) {
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
   async function handleSubmit(e) {
@@ -16,7 +16,7 @@ export default function ContactForm() {
       });
       if (!res.ok) throw new Error('Request failed');
       setStatus('sent');
-      setForm({ name: '', email: '', message: '' });
+      setForm({ name: '', email: '', subject: '', message: '' });
     } catch (err) {
       setStatus('error');
     }
@@ -48,6 +48,15 @@ export default function ContactForm() {
         onChange={(e) => setForm({ ...form, email: e.target.value })}
         className="w-full bg-white/70 border border-ink/10 rounded px-4 py-3 text-sm focus:outline-none focus:bg-white"
       />
+      {showSubject && (
+        <input
+          type="text"
+          placeholder="Subject"
+          value={form.subject}
+          onChange={(e) => setForm({ ...form, subject: e.target.value })}
+          className="w-full bg-white/70 border border-ink/10 rounded px-4 py-3 text-sm focus:outline-none focus:bg-white"
+        />
+      )}
       <textarea
         required
         placeholder="Message"

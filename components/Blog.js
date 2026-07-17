@@ -28,8 +28,8 @@ export default async function Blog() {
                   {new Date(p.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                   {' · '}{p.category}
                 </p>
-                <h3 className="font-bold text-lg mb-2 leading-snug">{p.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{p.excerpt}</p>
+                <h3 className="font-bold text-lg mb-2 leading-snug line-clamp-2">{p.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed line-clamp-3">{p.excerpt}</p>
               </div>
             </Link>
           ))}

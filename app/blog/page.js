@@ -82,7 +82,7 @@ export default async function BlogIndex() {
                   <Link href={`/blog/${p.id}`}>
                     <h2 className="font-bold text-xl mb-2 leading-snug hover:text-purple transition">{p.title}</h2>
                   </Link>
-                  <p className="text-sm text-gray-500 leading-relaxed mb-3">{p.excerpt}</p>
+                  <p className="text-sm text-gray-500 leading-relaxed mb-3 line-clamp-3">{p.excerpt}</p>
                   <Link href={`/blog/${p.id}`} className="text-xs font-bold uppercase tracking-wide text-purple hover:underline">
                     Read More +
                   </Link>

@@ -3,13 +3,13 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const items = [
-  { href: '/', label: 'Welcome Notes', key: 'home' },
-  { href: '/#about-me', label: 'Philosophy', key: 'philosophy' },
+  { href: '/welcome-notes', label: 'Welcome Notes', key: 'welcome-notes' },
+  { href: '/philosophy', label: 'Philosophy', key: 'philosophy' },
   { href: '/', label: 'Profile', key: 'profile' },
   { href: '/portfolio', label: 'Portfolio', key: 'portfolio' },
   { href: '/about', label: 'About', key: 'about' },
   { href: '/blog', label: 'Blog', key: 'blog' },
-  { href: '/#say-hello', label: 'Contact', key: 'contact' },
+  { href: '/contact', label: 'Contact', key: 'contact' },
 ];
 
 // Classic top navigation bar matching the original site's header — used on
