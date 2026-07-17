@@ -24,9 +24,14 @@ export default async function Portfolio() {
               href={`/portfolio/${p.id}`}
               className="group rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-lg transition block"
             >
-              <div className={`h-40 bg-gradient-to-br ${gradients[i % 2]} flex items-center justify-center text-white/50 text-xs font-bold uppercase tracking-wide`}>
-                {p.category}
-              </div>
+              {p.image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={p.image} alt={p.imageAlt || p.title} className="w-full h-40 object-cover" loading="lazy" />
+              ) : (
+                <div className={`h-40 bg-gradient-to-br ${gradients[i % 2]} flex items-center justify-center text-white/50 text-xs font-bold uppercase tracking-wide`}>
+                  {p.category}
+                </div>
+              )}
               <div className="p-5">
                 <p className="text-xs text-gray-400 mb-1">{new Date(p.date).getFullYear()}</p>
                 <p className="font-bold leading-snug">{p.title}</p>

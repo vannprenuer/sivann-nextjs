@@ -17,14 +17,20 @@ export default async function Blog() {
             <Link
               key={p.id}
               href={`/blog/${p.id}`}
-              className="block border border-gray-100 rounded-lg p-6 hover:shadow-lg transition"
+              className="block border border-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition"
             >
-              <p className="text-xs text-gold font-bold uppercase tracking-wide mb-2">
-                {new Date(p.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                {' · '}{p.category}
-              </p>
-              <h3 className="font-bold text-lg mb-2 leading-snug">{p.title}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed">{p.excerpt}</p>
+              {p.image && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={p.image} alt={p.imageAlt || p.title} className="w-full h-40 object-cover" loading="lazy" />
+              )}
+              <div className="p-6">
+                <p className="text-xs text-gold font-bold uppercase tracking-wide mb-2">
+                  {new Date(p.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                  {' · '}{p.category}
+                </p>
+                <h3 className="font-bold text-lg mb-2 leading-snug">{p.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{p.excerpt}</p>
+              </div>
             </Link>
           ))}
         </div>
