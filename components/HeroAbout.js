@@ -1,8 +1,8 @@
 import { getSiteInfo, getAbout } from '@/lib/wp';
 
-export default function HeroAbout() {
-  const site = getSiteInfo();
-  const about = getAbout();
+export default async function HeroAbout() {
+  const site = await getSiteInfo();
+  const about = await getAbout();
 
   return (
     <section id="about-me" className="scroll-mt-20">
@@ -12,8 +12,13 @@ export default function HeroAbout() {
         <div className="absolute -right-40 -top-40 w-[36rem] h-[36rem] bg-gold/10 rounded-full blur-3xl" />
         <div className="max-w-6xl mx-auto px-6 relative grid md:grid-cols-12 gap-10 items-center">
           <div className="md:col-span-4 flex justify-center md:justify-start">
-            <div className="w-52 h-52 md:w-64 md:h-64 rounded-full border-4 border-gold/70 bg-gradient-to-br from-panel to-ink flex items-center justify-center">
-              <span className="text-white/25 text-6xl font-bold">TS</span>
+            <div className="w-52 h-52 md:w-64 md:h-64 rounded-full border-4 border-gold/70 bg-gradient-to-br from-panel to-ink flex items-center justify-center overflow-hidden">
+              {site.photo ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={site.photo} alt={site.name} className="w-full h-full object-cover" />
+              ) : (
+                <span className="text-white/25 text-6xl font-bold">TS</span>
+              )}
             </div>
           </div>
           <div className="md:col-span-8">

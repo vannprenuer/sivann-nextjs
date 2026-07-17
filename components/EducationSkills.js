@@ -1,7 +1,7 @@
 import { getEducation, getSkills, getLanguages } from '@/lib/wp';
 
-export default function EducationSkills() {
-  const education = getEducation();
+export default async function EducationSkills() {
+  const education = await getEducation();
   const skills = getSkills();
   const languages = getLanguages();
 

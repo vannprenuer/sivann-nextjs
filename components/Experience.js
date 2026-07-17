@@ -1,7 +1,7 @@
 import { getExperience } from '@/lib/wp';
 
-export default function Experience() {
-  const items = getExperience();
+export default async function Experience() {
+  const items = await getExperience();
   return (
     <section id="experience" className="scroll-mt-20 bg-bg1 py-20">
       <div className="max-w-6xl mx-auto px-6">
@@ -15,7 +15,10 @@ export default function Experience() {
               </p>
               <h3 className="font-bold text-lg">{exp.heading}</h3>
               <p className="text-sm text-gray-500 mb-2">{exp.company} · {exp.location}</p>
-              <p className="text-sm text-gray-600 leading-relaxed max-w-3xl">{exp.description}</p>
+              <div
+                className="prose prose-sm prose-neutral max-w-3xl prose-a:text-purple prose-p:my-2"
+                dangerouslySetInnerHTML={{ __html: exp.description }}
+              />
             </div>
           ))}
         </div>
