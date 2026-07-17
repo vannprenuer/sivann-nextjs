@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import FloatingNav from '@/components/FloatingNav';
 import { getPortfolioById } from '@/lib/wp';
 
 export async function generateMetadata({ params }) {
@@ -16,7 +17,8 @@ export default async function PortfolioItem({ params }) {
   if (!item) notFound();
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white pt-14 lg:pt-0">
+      <FloatingNav />
       <article className="max-w-3xl mx-auto px-6 py-16">
         <Link href="/portfolio" className="text-sm font-bold text-ink hover:text-gold transition">← Back to portfolio</Link>
         <p className="text-xs text-gold font-bold uppercase tracking-wide mt-6 mb-2">

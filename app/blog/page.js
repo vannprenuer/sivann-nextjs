@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import FloatingNav from '@/components/FloatingNav';
 import { getRecentPosts } from '@/lib/wp';
 
 export const metadata = {
@@ -9,9 +10,10 @@ export const metadata = {
 export default async function BlogIndex() {
   const posts = await getRecentPosts(100);
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white pt-14 lg:pt-0">
+      <FloatingNav />
       <div className="max-w-5xl mx-auto px-6 py-16">
-        <Link href="/#blog" className="text-sm font-bold text-purple hover:underline">← Back to home</Link>
+        <Link href="/" className="text-sm font-bold text-purple hover:underline">← Back to home</Link>
         <h1 className="font-extrabold text-3xl mt-4 mb-10">MY BLOG: THE ART OF NON-OSTENTATIOUS</h1>
         <div className="grid md:grid-cols-2 gap-8">
           {posts.map((p) => (

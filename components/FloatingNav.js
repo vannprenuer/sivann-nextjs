@@ -2,14 +2,14 @@
 import { useState } from 'react';
 
 const items = [
-  { href: '#about-me', label: 'About Me', icon: '☺' },
-  { href: '#experience', label: 'Experience', icon: '💼' },
-  { href: '#education', label: 'Education', icon: '🎓' },
-  { href: '#skills', label: 'Skills', icon: '⚡' },
-  { href: '#portfolio', label: 'Portfolio', icon: '🗂' },
-  { href: '#quote', label: 'Quote of the Day', icon: '💬' },
-  { href: '#blog', label: 'Blog', icon: '✎' },
-  { href: '#say-hello', label: 'Say Hello', icon: '✉' },
+  { href: '/#about-me', label: 'About Me', icon: '☺' },
+  { href: '/#experience', label: 'Experience', icon: '💼' },
+  { href: '/#education', label: 'Education', icon: '🎓' },
+  { href: '/#skills', label: 'Skills', icon: '⚡' },
+  { href: '/#portfolio', label: 'Portfolio', icon: '🗂' },
+  { href: '/#quote', label: 'Quote of the Day', icon: '💬' },
+  { href: '/#blog', label: 'Blog', icon: '✎' },
+  { href: '/#say-hello', label: 'Say Hello', icon: '✉' },
 ];
 
 export default function FloatingNav() {
@@ -35,7 +35,7 @@ export default function FloatingNav() {
 
       {/* Mobile top bar */}
       <div className="lg:hidden fixed top-0 inset-x-0 z-40 bg-ink/95 backdrop-blur flex items-center justify-between px-5 h-14 border-b border-white/5">
-        <a href="#top" className="text-white font-bold tracking-wide">TE<span className="text-gold">Sivann</span></a>
+        <a href="/" className="text-white font-bold tracking-wide">TE<span className="text-gold">Sivann</span></a>
         <button onClick={() => setOpen(!open)} className="text-white" aria-label="Menu">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />

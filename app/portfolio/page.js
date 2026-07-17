@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import FloatingNav from '@/components/FloatingNav';
 import { getPortfolio } from '@/lib/wp';
 
 export const metadata = {
@@ -11,9 +12,10 @@ const gradients = ['from-panel to-ink', 'from-gold/30 to-panel'];
 export default async function PortfolioIndex() {
   const items = await getPortfolio(100);
   return (
-    <main className="min-h-screen bg-bg1">
+    <main className="min-h-screen bg-bg1 pt-14 lg:pt-0">
+      <FloatingNav />
       <div className="max-w-6xl mx-auto px-6 py-16">
-        <Link href="/#portfolio" className="text-sm font-bold text-ink hover:text-gold transition">← Back to home</Link>
+        <Link href="/" className="text-sm font-bold text-ink hover:text-gold transition">← Back to home</Link>
         <h1 className="font-extrabold text-3xl mt-4 mb-10">PORTFOLIO</h1>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {items.map((p, i) => (
