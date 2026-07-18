@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
-import PageBanner from '@/components/PageBanner';
+import FeaturedSlider from '@/components/FeaturedSlider';
+import PostCarousel from '@/components/PostCarousel';
 import { getRecentPosts } from '@/lib/wp';
 
 export const metadata = {
@@ -11,56 +12,18 @@ export const metadata = {
 
 export default async function BlogIndex() {
   const posts = await getRecentPosts(100);
-  const [featured, ...rest] = posts;
+  const featuredSlides = posts.slice(0, 3);
+  const carouselPosts = (posts.slice(3, 11).length ? posts.slice(3, 11) : posts.slice(0, 8));
   const recent = posts.slice(0, 6);
   const tags = [...new Set(posts.map((p) => p.category).filter(Boolean))];
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <SiteHeader active="blog" />
-      <PageBanner title="Blog" subtitle="MY BLOG: The Art of Non-ostentatious" />
 
       <main className="flex-1">
-        {featured && (
-          <div className="max-w-6xl mx-auto px-6 pt-12">
-            <div className="grid md:grid-cols-2 gap-1">
-              <Link href={`/blog/${featured.id}`} className="relative block h-72 md:h-full min-h-[18rem] group overflow-hidden">
-                {featured.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={featured.image} alt={featured.imageAlt || featured.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                ) : (
-                  <div className="w-full h-full bg-ink" />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <span className="inline-block text-xs font-bold uppercase tracking-wide bg-gold text-ink px-3 py-1 rounded mb-3">
-                    {featured.category}
-                  </span>
-                  <h2 className="text-white font-extrabold text-2xl leading-snug">{featured.title}</h2>
-                </div>
-              </Link>
-              <div className="grid grid-cols-2 gap-1">
-                {rest.slice(0, 4).map((p) => (
-                  <Link key={p.id} href={`/blog/${p.id}`} className="relative block h-36 group overflow-hidden">
-                    {p.image ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={p.image} alt={p.imageAlt || p.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                    ) : (
-                      <div className="w-full h-full bg-panel" />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-3">
-                      <span className="inline-block text-[10px] font-bold uppercase tracking-wide bg-gold text-ink px-2 py-0.5 rounded mb-1">
-                        {p.category}
-                      </span>
-                      <p className="text-white text-sm font-bold leading-snug line-clamp-2">{p.title}</p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+        <FeaturedSlider posts={featuredSlides} />
+        <PostCarousel posts={carouselPosts} />
 
         <div className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2 space-y-12">
