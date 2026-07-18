@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function TagDirectory({ portfolioCategories, categories }) {
   if (!portfolioCategories?.length && !categories?.length) return null;
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 grid sm:grid-cols-2 gap-10 border-t border-gray-100">
+    <div className="max-w-6xl mx-auto px-6 py-10 grid sm:grid-cols-[2fr_3fr] gap-10 border-t border-gray-100">
       {portfolioCategories?.length > 0 && (
         <div>
           <h3 className="font-extrabold text-sm uppercase tracking-wide mb-4">Portfolio</h3>

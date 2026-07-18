@@ -148,8 +148,13 @@ export default async function BlogIndex({ searchParams }) {
 
         <div className="max-w-6xl mx-auto px-6 py-16 border-t border-gray-100 grid lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2 space-y-12">
-            <h2 className="font-extrabold text-lg uppercase tracking-wide -mb-4">Latest Articles</h2>
-            {posts.map((p) => (
+            <div className="flex items-center justify-between -mb-4">
+              <h2 className="font-extrabold text-lg uppercase tracking-wide">Latest Articles</h2>
+              <Link href="/blog/all" className="text-xs font-bold uppercase tracking-wide text-purple hover:underline">
+                View All Articles +
+              </Link>
+            </div>
+            {posts.slice(0, 6).map((p) => (
               <article key={p.id} className="flex flex-col sm:flex-row gap-6 pb-12 border-b border-gray-100 last:border-0">
                 <Link href={`/blog/${p.id}`} className="sm:w-56 flex-shrink-0 block">
                   {p.image ? (
@@ -174,6 +179,12 @@ export default async function BlogIndex({ searchParams }) {
                 </div>
               </article>
             ))}
+            <Link
+              href="/blog/all"
+              className="block text-center text-xs font-bold uppercase tracking-wide text-white bg-ink rounded-full py-3 hover:bg-purple transition"
+            >
+              View All Articles
+            </Link>
           </div>
 
           <aside className="space-y-10">
