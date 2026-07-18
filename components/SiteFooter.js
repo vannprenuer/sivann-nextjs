@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getRecentPosts, getSiteInfo, getCategories } from '@/lib/wp';
-import { footerAbout, footerLinks } from '@/lib/content';
+import { footerAbout, footerLinks, footerImage } from '@/lib/content';
 
 const socialIcons = {
   Facebook: (
@@ -33,6 +33,10 @@ export default async function SiteFooter() {
       <div className="max-w-6xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
           <h3 className="text-white font-bold text-sm uppercase tracking-wide mb-4">{footerAbout.heading}</h3>
+          {footerAbout.image && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={footerAbout.image} alt={footerAbout.heading} className="mb-3 rounded" />
+          )}
           <p className="text-sm text-gray-400 leading-relaxed mb-3">{footerAbout.text}</p>
           <Link href={footerAbout.viewMoreHref} className="text-xs font-bold uppercase tracking-wide text-gold hover:underline">
             View More &gt;
@@ -113,13 +117,20 @@ export default async function SiteFooter() {
               </Link>
             ))}
           </div>
-          <div className="w-full h-28 rounded-lg bg-gradient-to-br from-purple via-ink to-panel" />
+          {footerImage && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={footerImage} alt="" className="w-full rounded-lg object-cover" />
+          )}
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-        <p>SIVANN.COM © Copyright {new Date().getFullYear()}. All Rights Reserved.</p>
-        <div className="flex gap-6">
+      <div className="max-w-6xl mx-auto px-6 mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center gap-4 text-xs text-gray-500">
+        {site.logoFooter && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={site.logoFooter} alt={site.name} className="h-6 w-auto opacity-80" />
+        )}
+        <p className="sm:ml-2">SIVANN.COM © Copyright {new Date().getFullYear()}. All Rights Reserved.</p>
+        <div className="flex gap-6 sm:ml-auto">
           <Link href="/welcome-notes" className="hover:text-gold transition">Welcome Notes</Link>
           <Link href="/" className="hover:text-gold transition">Profile</Link>
           <Link href="/about" className="hover:text-gold transition">About Us</Link>

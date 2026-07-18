@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import { siteInfo } from '@/lib/content';
 
 const items = [
   { href: '/welcome-notes', label: 'Welcome Notes', key: 'welcome-notes' },
@@ -19,8 +20,9 @@ export default function SiteHeader({ active }) {
   return (
     <header className="sticky top-0 z-40 bg-white border-b border-gray-100">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="font-extrabold text-lg tracking-wide text-ink">
-          TE<span className="text-gold">Sivann</span>
+        <Link href="/" className="flex items-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={siteInfo.logo} alt={siteInfo.name} className="h-8 w-auto" />
         </Link>
         <nav className="hidden lg:flex items-center gap-8">
           {items.map((it) => (
